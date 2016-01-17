@@ -1,0 +1,365 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* ---------- FONTAWESOME ---------- */
+/* ---------- http://fortawesome.github.com/Font-Awesome/ ---------- */
+/* ---------- http://weloveiconfonts.com/ ---------- */
+@import url(http://weloveiconfonts.com/api/?family=fontawesome);
+
+/* ---------- ERIC MEYER'S RESET CSS ---------- */
+/* ---------- http://meyerweb.com/eric/tools/css/reset/ ---------- */
+@import url(http://meyerweb.com/eric/tools/css/reset/reset.css);
+
+@import url(http://weloveiconfonts.com/api/?family=entypo);
+
+/* ---------- FONTAWESOME ---------- */
+[class*="fontawesome-"]:before {
+	font-family: 'FontAwesome', sans-serif;
+}
+
+[class*="entypo-"]:before {
+	font-family: 'entypo', Roboto;
+}
+
+/* ---------- GENERAL ---------- */
+body {
+	background-color: #C0C0C0;
+	color: #000;
+	font-family: "Varela Round", Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	line-height: 1.5em;
+}
+
+input {
+	border: none;
+	font-family: inherit;
+	font-size: inherit;
+	font-weight: inherit;
+	line-height: inherit;
+	-webkit-appearance: none;
+}
+
+/* ---------- LOGIN ---------- */
+.main_small {
+	margin: 25px auto;
+	width: 450px;
+	text-align: center;
+}
+
+.main_big {
+	margin: 25px auto;
+	width: 800px;
+	text-align: center;
+}
+
+.title {
+	list-style-type: none;
+	padding: 5px;
+	overflow: hidden;
+	background-color: #9a9696;
+	text-align: center;
+}
+
+h1 {
+	background-color: #9a9696;
+	-webkit-border-radius: 20px 20px 0 0;
+	-moz-border-radius: 20px 20px 0 0;
+	border-radius: 20px 20px 0 0;
+	color: #fff;
+	font-size: small;
+	padding: 5px 5px;
+}
+
+h2 {
+	background-color: #9a9696;
+	-webkit-border-radius: 20px 20px 0 0;
+	-moz-border-radius: 20px 20px 0 0;
+	border-radius: 20px 20px 0 0;
+	color: #fff;
+	font-size: medium;
+	padding: 5px 5px;
+}
+
+h2 span[class*="fontawesome-"] {
+	margin-right: 14px;
+}
+
+fieldset {
+	background-color: #fff;
+	-webkit-border-radius: 0 0 20px 20px;
+	-moz-border-radius: 0 0 20px 20px;
+	border-radius: 0 0 20px 20px;
+	padding: 20px 26px;
+}
+
+p {
+	color: #777;
+	margin-bottom: 14px;
+}
+
+p:last-child {
+	margin-bottom: 0;
+}
+
+fieldset input[type="number"] {
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	background-color: #eee;
+	color: #777;
+	padding: 4px 10px;
+	width: 100px;
+	border: 0;
+	text-align: center;
+}
+
+select {
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	background-color: #eee;
+	color: #777;
+	padding: 7px 10px;
+	width: 100px;
+	border: 0;
+	text-align: center;
+	margin: 5px 5px;
+}
+
+input {
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+
+input[type="email"], input[type="password"], input[type="text"]
+	{
+	background-color: #eee;
+	color: #777;
+	padding: 7px 10px;
+	width: 300px;
+	margin: 5px 5px;
+}
+
+input[type="submit"] {
+	background-color: #aadef9;
+	color: #31708f;
+	display: block;
+	margin: 0 auto;
+	padding: 4px 0;
+	width: 100px;
+}
+
+input[type="submit"]:hover {
+	background-color: #7ed3fd;
+}
+
+.has-error {
+    outline: none !important;
+    border:1px solid red;
+    box-shadow: 0 0 10px red;
+}
+
+input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focus {
+    outline: none !important;
+    border:1px solid #bce8f1;
+    box-shadow: 0 0 10px #719ECE;
+}
+
+.button {
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	background-color: #aadef9;
+	color: #31708f;
+	margin: 4px 4px;
+	padding: 4px 4px;
+	width: 100px;
+	border: 1px;
+	border-color: #bce8f1;
+}
+
+.button:hover {
+	background-color: #7ed3fd;
+}
+
+.close {
+	border: 1px solid;
+	background-color: #dff0d8;
+	border-color: #c9ddb9;
+	color: #3c763d;
+}
+.close:hover {
+	background-color: #d0e3c7;
+}
+
+.link {
+	color: #9a9696;
+}
+
+.link:hover {
+	color: #636060;
+}
+
+.linkWhite {
+	color: white;
+}
+
+.linkWhite:hover {
+	color: #636060;
+}
+
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #9a9696;
+	font-size: small;
+	border-top: 1px solid #bbb;
+}
+
+li {
+	float: left;
+	border-right: 1px solid #bbb;
+	border-left: 1px solid #bbb;
+}
+
+li a {
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 5px 5px;
+	text-decoration: none;
+}
+
+li a:hover {
+	background-color: #C0C0C0;
+}
+
+li:last-child {
+	border-right: none;
+}
+
+.floatLeft {
+	border-right: 1px solid #bbb;
+	float: left;
+}
+
+.floatRight {
+	float: right;
+}
+
+.error {
+	padding: 15px;
+	margin-bottom: 20px;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	color: #a94442;
+	background-color: #fdb4b4;
+	border-color: #ebccd1;
+}
+
+.msg {
+	padding: 15px;
+	margin-bottom: 20px;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	color: #31708f;
+	background-color: #e9f6fd;
+	border-color: #bce8f1;
+}
+
+footer {
+	font-color: #aadef9;
+	background-color: #C0C0C0;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	text-align: center;
+	padding: 10px;
+	background-color: #C0C0C0;
+}
+
+table, th, td {
+	border: 1px solid #ddd;
+}
+
+table {
+	margin: 0px auto;
+	color: #333;
+	font-family: "Varela Round", Arial, Helvetica, sans-serif;
+	width:100%; 
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+td, th {
+	padding: 5px 5px;
+	text-align: center;
+	vertical-align: center;
+	white-space: nowrap;
+}
+
+th {
+	background: #c7c5c5;
+}
+
+td {
+	background: #FAFAFA;
+}
+
+tr:hover {
+	background-color: #f5f5f5;
+}
+
+tr:nth-child(even) td {
+	background: #F1F1F1;
+}
+
+tr:nth-child(odd) td {
+	background: #FEFEFE;
+}
+
+.alert {
+	text-align: center;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	margin: 5px 200px;
+	padding: 5px;
+}
+
+.alertNoMargin {
+	text-align: center;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	margin: 5px;
+	padding: 5px;
+}
+
+.alert-success {
+	background-color: #dff0d8;
+	border-color: #c9ddb9;
+	color: #3c763d;
+}
+
+.alert-error {
+	color: #a94442;
+	background-color: #fdb4b4;
+	border-color: #ebccd1;
+}
+
+.error-area {
+	font-size:small;
+	padding: 5px;
+	margin-bottom: 5px;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	color: #a94442;
+	background-color: #fdb4b4;
+	border-color: #ebccd1;
+}
+
+.no-display {
+	display: none;
+}
