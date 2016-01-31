@@ -69,18 +69,20 @@
 					<form:input path="dateOfBirth" placeholder="${DateOfBirth}"
 						class="${status.error ? 'has-error' : ''}" />
 				</spring:bind>
+				<c:choose>
+					<c:when test="${empty userForm.userID}">
+						<spring:bind path="password">
+							<form:password path="password" placeholder="${Password}"
+								showPassword="true" class="${status.error ? 'has-error' : ''}" />
+						</spring:bind>
 
-				<spring:bind path="password">
-					<form:password path="password" placeholder="${Password}"
-						showPassword="true" class="${status.error ? 'has-error' : ''}" />
-				</spring:bind>
-
-				<spring:bind path="confirmPassword">
-					<form:password path="confirmPassword"
-						placeholder="${ConfirmPassword}" showPassword="true"
-						class="${status.error ? 'has-error' : ''}" />
-				</spring:bind>
-
+						<spring:bind path="confirmPassword">
+							<form:password path="confirmPassword"
+								placeholder="${ConfirmPassword}" showPassword="true"
+								class="${status.error ? 'has-error' : ''}" />
+						</spring:bind>
+					</c:when>
+				</c:choose>
 				<spring:bind path="street">
 					<form:input path="street" placeholder="${Street}"
 						class="${status.error ? 'has-error' : ''}" />
@@ -97,11 +99,8 @@
 				</spring:bind>
 
 				<spring:bind path="country">
-					<form:select path="country" style="width: 320px;text-align: left;"
-						class="${status.error ? 'has-error' : ''}">
-						<form:option value="NONE" label="${Country}" />
-						<form:options items="${countryList}" />
-					</form:select>
+					<form:input path="country" placeholder="${Country}"
+						class="${status.error ? 'has-error' : ''}" />
 				</spring:bind>
 
 				<c:choose>

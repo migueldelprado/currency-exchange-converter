@@ -51,10 +51,12 @@ public class UserFormValidator implements Validator {
 
 		ValidationUtils.rejectIfEmptyOrWhitespace( errors, "dateOfBirth", "NotEmpty.userForm.dateOfBirth" );
 
-		ValidationUtils.rejectIfEmptyOrWhitespace( errors, "password", "NotEmpty.userForm.password" );
-		ValidationUtils.rejectIfEmptyOrWhitespace( errors, "confirmPassword", "NotEmpty.userForm.confirmPassword" );
-		if ( !user.getPassword().equals( user.getConfirmPassword() ) ) {
-			errors.rejectValue( "confirmPassword", "Diff.userform.confirmPassword" );
+		if( user.getPassword() != null ) {
+			ValidationUtils.rejectIfEmptyOrWhitespace( errors, "password", "NotEmpty.userForm.password" );
+			ValidationUtils.rejectIfEmptyOrWhitespace( errors, "confirmPassword", "NotEmpty.userForm.confirmPassword" );
+			if ( !user.getPassword().equals( user.getConfirmPassword() ) ) {
+				errors.rejectValue( "confirmPassword", "Diff.userform.confirmPassword" );
+			}
 		}
 
 		ValidationUtils.rejectIfEmptyOrWhitespace( errors, "street", "NotEmpty.userForm.street" );
@@ -64,10 +66,7 @@ public class UserFormValidator implements Validator {
 		}
 
 		ValidationUtils.rejectIfEmptyOrWhitespace( errors, "city", "NotEmpty.userForm.city" );
-
-		if ( user.getCountry().equals( "NONE" ) ) {
-			errors.rejectValue( "country", "NotEmpty.userForm.country" );
-		}
+		ValidationUtils.rejectIfEmptyOrWhitespace( errors, "country", "NotEmpty.userForm.country" );
 
 	}
 }

@@ -36,7 +36,7 @@ public class RESTController {
 	@Autowired
 	CurrencyExchangeQueryService currencyExchangeQueryService;
 
-	// Retrieve User User
+	// Retrieve User
 	@RequestMapping( value = "/restful/users/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE )
 	public ResponseEntity< User > getUser( @PathVariable( "id" ) Integer id ) {
 		logger.debug( "Fetching User with id " + id );

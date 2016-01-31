@@ -40,7 +40,10 @@ public class UserServiceImpl implements UserService {
 			user.setPassword( passwordEncoder.encode( user.getPassword() ) );
 			userDao.save( user );
 		} else {
-			if ( !userDao.findById( user.getUserID() ).getPassword().equals( user.getPassword() ) ) {
+			if( user.getPassword() == null ) {
+				user.setPassword( userDao.findById( user.getUserID() ).getPassword() );
+			}
+			else if ( !userDao.findById( user.getUserID() ).getPassword().equals( user.getPassword() ) ) {
 				user.setPassword( passwordEncoder.encode( user.getPassword() ) );
 			}
 			userDao.update( user );

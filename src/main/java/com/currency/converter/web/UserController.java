@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -54,6 +56,9 @@ public class UserController {
 		this.userService = userService;
 	}
 
+	@Autowired
+	private MessageSource messageSource;
+
 	// save or update user
 	@RequestMapping( value = "/users", method = RequestMethod.POST )
 	public String saveOrUpdateUser( @ModelAttribute( "userForm" ) @Validated User user, BindingResult result, Model model,
@@ -61,15 +66,14 @@ public class UserController {
 		logger.debug( "saveOrUpdateUser() : {}", user );
 
 		if ( result.hasErrors() ) {
-			populateDefaultModel( model );
 			return "users/userform";
 		} else {
 
 			redirectAttributes.addFlashAttribute( "css", "success" );
 			if ( userService.findById( user.getUserID() ) == null ) {
-				redirectAttributes.addFlashAttribute( "msg", "User added successfully!" );
+				redirectAttributes.addFlashAttribute( "msg", messageSource.getMessage( "User.Added", null, LocaleContextHolder.getLocale() ) );
 			} else {
-				redirectAttributes.addFlashAttribute( "msg", "User updated successfully!" );
+				redirectAttributes.addFlashAttribute( "msg", messageSource.getMessage( "User.Updated", null, LocaleContextHolder.getLocale() ) );
 			}
 
 			userService.saveOrUpdate( user );
@@ -86,9 +90,6 @@ public class UserController {
 		User user = new User();
 
 		model.addAttribute( "userForm", user );
-
-		populateDefaultModel( model );
-
 		return "users/userform";
 
 	}
@@ -108,9 +109,6 @@ public class UserController {
 				User user = userService.findById( id );
 				user.setConfirmPassword( user.getPassword() );
 				model.addAttribute( "userForm", user );
-
-				populateDefaultModel( model );
-
 				return "users/userform";
 			}
 		}
@@ -124,21 +122,11 @@ public class UserController {
 		User user = userService.findById( id );
 		if ( user == null ) {
 			model.addAttribute( "css", "error" );
-			model.addAttribute( "msg", "User not found" );
+			model.addAttribute( "msg", messageSource.getMessage( "User.NotFound", null, LocaleContextHolder.getLocale() ) );
 		}
 		model.addAttribute( "user", user );
 
 		return "users/show";
-	}
-
-	private void populateDefaultModel( Model model ) {
-		Map< String, String > country = new LinkedHashMap< String, String >();
-		country.put( "US", "United Stated" );
-		country.put( "CN", "China" );
-		country.put( "SG", "Singapore" );
-		country.put( "MY", "Malaysia" );
-		model.addAttribute( "countryList", country );
-
 	}
 
 	@ExceptionHandler( EmptyResultDataAccessException.class )
@@ -147,11 +135,10 @@ public class UserController {
 		logger.error( "Request: {}, error ", req.getRequestURL(), ex );
 
 		ModelAndView model = new ModelAndView();
-		model.setViewName( "user/show" );
-		model.addObject( "msg", "user not found" );
+		model.setViewName( "/users/{id}" );
+		model.addObject( "msg", messageSource.getMessage( "User.NotFound", null, LocaleContextHolder.getLocale() ) );
 
 		return model;
-
 	}
 
 	public boolean getIsUserLogged() {

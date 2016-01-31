@@ -9,6 +9,8 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -61,6 +63,9 @@ public class CurrencyExchangeController {
 	public void setUserService( UserService userService ) {
 		this.userService = userService;
 	}
+	
+	@Autowired
+	private MessageSource messageSource;
 
 	@RequestMapping( value = "/", method = RequestMethod.GET )
 	public String index( Model model ) {
@@ -85,9 +90,6 @@ public class CurrencyExchangeController {
 		logger.debug( "deleteQuery() : {}", id );
 
 		exchangeQueryService.delete( id );
-
-		redirectAttributes.addFlashAttribute( "css", "success" );
-		redirectAttributes.addFlashAttribute( "msg", "User is deleted!" );
 
 		return "redirect:/currency_exchange/list";
 	}
@@ -129,7 +131,7 @@ public class CurrencyExchangeController {
 	public String showNew( @ModelAttribute( "currencyExchangeQueryForm" ) CurrencyExchangeQuery currencyExchangeQuery,
 			@RequestParam( required = false, value = "add" ) String add, Model model, final RedirectAttributes redirectAttributes ) {
 		logger.debug( "showNew()" );
-
+		
 		this.exchangeQueryForm.setOriginCurrency( currencyExchangeQuery.getOriginCurrency() );
 		this.exchangeQueryForm.setDestinationCurrency( currencyExchangeQuery.getDestinationCurrency() );
 		this.exchangeQueryForm.setQuantityOrigin( currencyExchangeQuery.getQuantityOrigin() );
@@ -139,7 +141,7 @@ public class CurrencyExchangeController {
 
 		if ( add != null ) {
 			redirectAttributes.addFlashAttribute( "css", "success" );
-			redirectAttributes.addFlashAttribute( "msg", "Added!!" );
+			redirectAttributes.addFlashAttribute( "msg", messageSource.getMessage("Common.Added", null, LocaleContextHolder.getLocale() ) );
 
 			exchangeQueryService.save( currencyExchangeQuery );
 		}
