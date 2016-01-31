@@ -1,8 +1,5 @@
 package com.currency.converter.web;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
